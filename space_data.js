@@ -1,4 +1,4 @@
-module.exports = [
+var data = [
 	{
 		"name":"WorkHouse NYC",
 		"lat":40.75674739999999,

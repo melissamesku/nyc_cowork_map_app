@@ -10,15 +10,16 @@
 	<nav>
 		<h2>NYC Coworking Spaces</h2>
 	</nav>
-
-	<div ng-app="mapsApp" ng-controller="MapCtrl">
-	    <div id="map"></div>
-	    <div id="class" ng-repeat="marker in markers | orderBy : 'title'">
-	        <a href="#" ng-click="openInfoWindow($event, marker)">{{marker.title}}</a>
-	    </div>
-	</div>
 	
 	<div ng-app="CoworkingSpaces" id="wrapper" ngcoworkingspaces data-ng-init="coworking.getSpaces()">
+
+		<div ng-app="mapsApp" ng-controller="MapCtrl">
+		    <div id="map"></div>
+		    <div id="class" ng-repeat="marker in markers | orderBy : 'title'">
+		        <a href="#" ng-click="openInfoWindow($event, marker)">{{marker.title}}</a>
+		    </div>
+		</div>
+
 		<label>Search: <input ng-model="searchText"></label>
 		<form>
 			<label>Name of the coworking space</label>
