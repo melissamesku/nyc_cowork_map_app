@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="CoworkingSpaces">
+<html>
 <head>
 	<title>NYC Coworking Spaces Map</title>
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
@@ -10,8 +10,15 @@
 	<nav>
 		<h2>NYC Coworking Spaces</h2>
 	</nav>
+
+	<div ng-app="mapsApp" ng-controller="MapCtrl">
+	    <div id="map"></div>
+	    <div id="class" ng-repeat="marker in markers | orderBy : 'title'">
+	        <a href="#" ng-click="openInfoWindow($event, marker)">{{marker.title}}</a>
+	    </div>
+	</div>
 	
-	<div id="wrapper" ngcoworkingspaces data-ng-init="coworking.getSpaces()">
+	<div ng-app="CoworkingSpaces" id="wrapper" ngcoworkingspaces data-ng-init="coworking.getSpaces()">
 		<label>Search: <input ng-model="searchText"></label>
 		<form>
 			<label>Name of the coworking space</label>
@@ -38,5 +45,8 @@
 			<br>
 		</div> <!-- close container -->
 	</div>
+	<script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4haT9Y3XCpcw2mAPoA-WNdE-Sbvh9X4E&callback=initMap">
+    </script>
 </body>
 </html>
