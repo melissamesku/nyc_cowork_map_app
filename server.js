@@ -74,7 +74,7 @@ app.post('/spaces', function(req, res) {
 		if(err) {
 			console.log('ERROR: ' + err);
 		} else {
-			console.log("Saaved!");
+			console.log("It's been saved, ma'am");
 			res.send(space);
 		}
 	});
@@ -100,7 +100,6 @@ app.put('/spaces/:id', function(req, res) {
 app.delete('/spaces/:id', function(req, res) {
 	Space.findOneAndRemove({_id: req.params.id}, function(err) {
 		if(err) console.log(err);
-		console.log('Space deleted');
 		res.send('Space deleted');
 	});
 });
