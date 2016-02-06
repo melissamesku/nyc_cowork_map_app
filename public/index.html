@@ -14,47 +14,50 @@
 	</nav>
 	
 	<div ng-app="CoworkingSpaces" id="wrapper" ngcoworkingspaces data-ng-init="coworking.getSpaces()">
-		<section class="small-12 large-6 columns">
+		<div class="row">
+			<section class="small-12 large-6 columns">
 
-			<div ng-app="mapsApp" ng-controller="MapCtrl">
-			    <div id="map"></div>
-			</div>
-		</section>
-
-		<section class="small-12 large-6 columns" id="sidebar-area">
-
-			<div ng-app="mapsApp" ng-controller="MapCtrl">
-			    <div class="google-maps-list" ng-repeat="marker in markers | orderBy : 'title'">
-			        <a href="#" ng-click="openInfoWindow($event, marker)">{{marker.title}}</a>
-			    </div>
-			</div>
-
-			<label>Search: <input ng-model="searchText"></label>
-			<form>
-				<label>Name of the coworking space</label>
-				<input type="text" ng-model="coworking.formSpaceName"><br>
-				<label>Address</label>
-				<input type="text" ng-model="coworking.formSpaceAddress"><br>
-				<label>URL</label>
-				<input type="text" ng-model="coworking.formSpaceURL"><br>
-				
-				<button ng-click="coworking.addSpace()">Add Space</button>
-				<button ng-click="coworking.editSpace()">Edit Space</button>
-				<button ng-click="coworking.deleteSpace()">Delete Space</button>
-			</form>
-
-			<div id="container" ng-repeat="space in coworking.spaces | filter:searchText">
-				<div class="space-div">
-					<h2><span class="title">{{ space.name }}</span></h2> 
-					<p><em>{{ space.address}}</em><br></p>
-					<p><a href={{space.url}}>{{space.url}}</a></p>
-
-					<button ng-click="coworking.populateForm(space)">Edit</button>
-					<button ng-click="coworking.deleteSpace(space)">Delete</button>
+				<div ng-app="mapsApp" ng-controller="MapCtrl">
+				    <div id="map"></div>
 				</div>
-				<br>
-			</div> <!-- close container -->
-		</section>
+				
+			</section>
+
+			<section class="small-12 large-6 columns" id="sidebar-area">
+
+				<div ng-app="mapsApp" ng-controller="MapCtrl">
+				    <div class="google-maps-list" ng-repeat="marker in markers | orderBy : 'title'">
+				        <a href="#" ng-click="openInfoWindow($event, marker)">{{marker.title}}</a>
+				    </div>
+				</div>
+
+				<label>Search: <input ng-model="searchText"></label>
+				<form>
+					<label>Name of the coworking space</label>
+					<input type="text" ng-model="coworking.formSpaceName"><br>
+					<label>Address</label>
+					<input type="text" ng-model="coworking.formSpaceAddress"><br>
+					<label>URL</label>
+					<input type="text" ng-model="coworking.formSpaceURL"><br>
+					
+					<button ng-click="coworking.addSpace()">Add Space</button>
+					<button ng-click="coworking.editSpace()">Edit Space</button>
+					<button ng-click="coworking.deleteSpace()">Delete Space</button>
+				</form>
+
+				<div id="container" ng-repeat="space in coworking.spaces | filter:searchText">
+					<div class="space-div">
+						<h2><span class="title">{{ space.name }}</span></h2> 
+						<p><em>{{ space.address}}</em><br></p>
+						<p><a href={{space.url}}>{{space.url}}</a></p>
+
+						<button ng-click="coworking.populateForm(space)">Edit</button>
+						<button ng-click="coworking.deleteSpace(space)">Delete</button>
+					</div>
+					<br>
+				</div> <!-- close container -->
+			</section>
+		</div>
 	</div>
 
 	<script async defer
